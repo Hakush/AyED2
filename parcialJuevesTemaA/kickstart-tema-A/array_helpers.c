@@ -32,20 +32,18 @@ void array_dump(BakeryProductTable a)
 
 unsigned int best_profit(BakeryProductTable a)
 {
-    unsigned int max_profit = 0u;
-    unsigned int max_profit_before = 0u;
+    unsigned int max_profit;
+    max_profit = (a[0][0].sale_value - (a[0][0].flour_cant * a[0][0].flour_price +
+                        a[0][0].yeast_cant * a[0][0].yeast_price +
+                        a[0][0].butter_cant * a[0][0].butter_price));
+
     for (int city = 0; city < CITIES; ++city)
     {
 
         for (int season= 0; season < SEASONS; ++season)
         {
-            max_profit = 0;
-            max_profit = max_profit + (a[city][season].sale_value - (a[city][season].flour_cant * a[city][season].flour_price +
-                        a[city][season].yeast_cant * a[city][season].yeast_price +
-                        a[city][season].butter_cant * a[city][season].butter_price));
-
-            if(max_profit > max_profit_before) {
-                max_profit_before = max_profit;
+            if(max_profit < (a[city][season].sale_value - (a[city][season].flour_cant * a[city][season].flour_price + a[city][season].yeast_cant * a[city][season].yeast_price + a[city][season].butter_cant * a[city][season].butter_price))) {
+                max_profit = (a[city][season].sale_value - (a[city][season].flour_cant * a[city][season].flour_price + a[city][season].yeast_cant * a[city][season].yeast_price + a[city][season].butter_cant * a[city][season].butter_price));
             }
         }
 
