@@ -6,6 +6,7 @@
 *.ind
 *.ini 
 *.ilg \
+*/*.ini
 */*.o 
 */*.d 
 */*.asm 
