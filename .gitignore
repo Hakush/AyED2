@@ -3,13 +3,11 @@
 *.idx 
 *.aux 
 *.log 
-*.ind 
+*.ind
+*.ini 
 *.ilg \
 */*.o 
 */*.d 
 */*.asm 
 */*.sym \
-*.ini
-*/*.ini
-*/*/*.ini
-*/*/*/*/ini
+
