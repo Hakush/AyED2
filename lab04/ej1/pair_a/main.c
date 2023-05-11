@@ -15,7 +15,7 @@ int main(void) {
     // Se muestra el par por pantalla
     printf("p = ");
     show_pair(p);
-    // Nuevo para q con elementos de p intercambiados
+    // Nuevo par q con elementos de p intercambiados
     q = pair_swapped(p);
     // Se muestra q
     printf("q = ");
@@ -25,3 +25,8 @@ int main(void) {
     q = pair_destroy(q);
     return EXIT_SUCCESS;
 }
+
+/*
+No hay encapsulamiento porque puedo acceder a los campos del struct
+independientemente de sus operaciones
+*/

@@ -26,7 +26,6 @@ int main(void) {
 }
 
 /*
-La diferencia entre el pair.h del ejercicio anterior y este
-es que el de este es polimorfico, ya que elem podria ser sinonimo
-de otro tipo distinto a int tambien.
+Ahora si hay encapsulamiento porque solo puedo acceder a los campos del struct
+con una operacion definida en el .h
 */

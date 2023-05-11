@@ -24,3 +24,8 @@ int main(void) {
     q = pair_destroy(q);
     return EXIT_SUCCESS;
 }
+
+/*
+No hay encapsulamiento porque puedo acceder a los campos del struct
+independientemente de sus operaciones
+*/
