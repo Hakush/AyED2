@@ -78,6 +78,7 @@ stack stack_destroy(stack p) {
     p->size = 0;
     p->capacity = 0;
     free(p->elems);
+    free(p);
     return p;
 }
 
