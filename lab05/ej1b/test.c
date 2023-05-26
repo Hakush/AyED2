@@ -56,7 +56,6 @@ int main(int argc, char const *argv[]) {
 
 	printf("Array: ");
 	array_dump(a, length);
-
 	bool j = true;
 	for (unsigned int i = length; 0u < i; --i)
 	{	
@@ -70,6 +69,7 @@ int main(int argc, char const *argv[]) {
 		printf("\n---XX------TEST 3)b) not PASSED----XX-----\n");
 		printf("\n");
 	}
+	free(a);
 
 	
 
@@ -78,15 +78,16 @@ int main(int argc, char const *argv[]) {
 	stack q = stack_empty();
 	print_stack(q);
 	length = 0;
-	a = stack_to_array(q);
+	stack_elem * b = stack_to_array(q);
 	bool h = false;
-	if (a == NULL)
+	if (b == NULL)
 	{
 		printf("stack is equal to NULL\n");
 		h = true;
 	}
 	printf("Array: ");
-	array_dump(a, length);
+	array_dump(b, length);
+	free(b);
 
 	h ? printf("\n-----------TEST 3)a) PASSED------------\n") : printf("\n---XX------TEST 3)a) not PASSED------XX----\n");
 	printf("\n");
