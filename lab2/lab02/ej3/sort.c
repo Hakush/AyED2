@@ -8,7 +8,7 @@
 #include "sort.h"
 
 
-static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
+static unsigned int partition(player_t a[], unsigned int izq, unsigned int der) {
     int pivot = a[izq];
     unsigned int ppiv = izq;
     unsigned int i = izq+1;
@@ -35,7 +35,7 @@ static unsigned int partition(int a[], unsigned int izq, unsigned int der) {
     */
 }
 
-static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
+static void quick_sort_rec(player_t a[], unsigned int izq, unsigned int der) {
     if ((der > izq)) {
     	unsigned int ppiv = partition(a,izq,der);
     	if (ppiv == 0) {
@@ -48,13 +48,6 @@ static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
     }
 }
 
-/*
-Error segFault
-el problema estaba en que si ppiv es 0 y es unsigned, la llamada a quick_sort_rec(a,izq,ppiv-1u) se hace con der = el ultimo numero de los unsigned (4294967295), ya que 0u - 1u no puede dar negativo, da el maximo
-del conjunto de los unsigned ints. Luego esto ocasiona que se llame a partition con (a,izq,429...) lo cual termina dando segmentation fault por chequear lugares del arreglo que no estan reservados en memoria
-*/
-
-void quick_sort(int a[], unsigned int length) {
+void quick_sort(player_t a[], unsigned int length) {
     quick_sort_rec(a, 0, (length == 0) ? 0 : length - 1);
 }
-
