@@ -56,12 +56,13 @@ int main(int argc, char *argv[]) {
     /*dumping the queue */
     printf("length: %u\n", queue_size(q));
     queue_dump(q, stdout);
-    
-    // 
-    // COMPLETAR: Liberar la memoria usada por <q>
-    //
 
-    queue_destroy(q);
+    /* Eliminar el n-esimo elemento*/
+    q = queue_user_disscard(q);
+    printf("\nCola con el n-esimo elem eliminado: \n");
+    queue_dump(q, stdout);
+    
+    q = queue_destroy(q);
 
     return EXIT_SUCCESS;
 }
