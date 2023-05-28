@@ -6,9 +6,6 @@
 #include "queue.h"
 
 struct s_queue {
-    /*
-     * COMPLETAR
-     */
     struct s_node *first;
 };
 
