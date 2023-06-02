@@ -134,4 +134,3 @@ pqueue pqueue_destroy(pqueue q) {
 
     return q;
 }
-

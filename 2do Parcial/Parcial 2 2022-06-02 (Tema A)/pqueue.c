@@ -55,7 +55,7 @@ static bool invrep(pqueue q) {
         }
 
         b = b && (q->size == length);
-    } else  {
+    } else {
         printf("q == NULL\n");
     }
     return b;
@@ -77,11 +77,37 @@ pqueue pqueue_enqueue(pqueue q, pqueue_elem e, unsigned int priority) {
         q->node = new_node;
         q->size = 1;
     } else {
-        struct s_node * g = q->node;
-        while(g->next != NULL) {
+        struct s_node * g = q->node; // g es el puntero que apunta al nodo actual
+        struct s_node * p = NULL; // p es el puntero que apunta al nodo anterior
+        
+        // Avanzo hasta llegar al ultimo nodo o a que la prioridad del nodo sea menor
+        // a la del que quiero encolar 
+        while(g->priority <= priority && g->next != NULL) {
+            p = g;
             g = g->next;
+
         }
-        g->next = new_node;
+        // Si pare por la prioridad
+        if(g->priority > priority) {
+            //Inserto el newnode antes que g
+	        new_node->next = g;
+	        if(p != NULL) {
+                // Si hay nodo anterior a g, a ese nodo en next le pongo el nuevo nodo
+	            p->next = new_node;
+	        } else {
+                // Si no hay nodo anterior a g, es trivial saber que
+                // el primer nodo es el nuevo nodo con el next en la cola anterior
+		        q->node = new_node;
+	        }
+	    } else {
+            // Si pare porque llegue al ultimo nodo
+            // al ultimo nodo en next le pongo el nuevo nodo
+	        new_node->next = g->next;
+	        g->next = new_node;
+	    }
+
+	    g = NULL;
+	    p = NULL;
         q->size = q->size + 1;
     }
     assert(invrep(q));
