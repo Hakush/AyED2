@@ -21,7 +21,7 @@ abb abb_add(abb tree, abb_elem e);
  *
  * PRE : {tree --> ABB}
  *     tree = abb_add(tree, e);
- * POS : {tree --> ABB && abb_is_empty(tree)}
+ * POS : {tree --> ABB && !abb_is_empty(tree)}
  */
 
 bool abb_is_empty(abb tree);
