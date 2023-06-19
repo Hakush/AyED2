@@ -136,4 +136,10 @@ root: 1
                                             16
                                                 18
                                                     22
+
+La solucion es recorrer el arbol de manera pre-order
+asi terminamos imprimiendo el arbol tal que asi:
+7 4 2 1 3 5 6 15 10 8 12 18 16 22
+
+y al agregar los elementos de esa forma se respeta el orden original
 */

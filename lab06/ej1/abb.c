@@ -23,12 +23,10 @@ static bool invrep(abb tree) {
     tree = tree;
     if(tree!=NULL) {
         if(tree->left != NULL) {
-            b = b && tree->elem > tree->left->elem;
-            invrep(tree->left);
+            b = invrep(tree->left) && tree->elem > tree->left->elem;
         } 
         if (tree->right != NULL) {
-            b = b && tree->elem < tree->right->elem;
-            invrep(tree->right);
+            b = invrep(tree->right) && tree->elem < tree->right->elem;
         }
     }
     return b;
@@ -166,8 +164,8 @@ abb_elem abb_min(abb tree) {
 void abb_dump(abb tree) {
     assert(invrep(tree));
     if (tree != NULL) {
-        abb_dump(tree->left);
         printf("%d ", tree->elem);
+        abb_dump(tree->left);
         abb_dump(tree->right);
     }
 }
