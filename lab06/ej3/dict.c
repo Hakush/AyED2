@@ -11,20 +11,27 @@ struct _node_t
     value_t value;
 };
 
+static bool invrep_aux(dict_t dict, key_t min, key_t max) {
+    bool b = true;
+    if(dict != NULL) {
+        b = string_less(min,dict->key) && string_less(dict->key,max);
+        b = b && invrep_aux(dict->left, min, dict->key);
+        b = b && invrep_aux(dict->right, dict->key, max);
+    }
+    return b;
+}
+
 static bool invrep(dict_t dict)
 {
-    bool b = true;
-    dict = dict;
-    if (dict != NULL)
+    if (dict == NULL)
     {
-        if (dict->left != NULL)
-        {
-            b = invrep(dict->left) && string_less(dict->left->key, dict->key);
-        }
-        if (dict->right != NULL)
-        {
-            b = invrep(dict->right) && string_less(dict->key, dict->right->key);
-        }
+        return true;
+    }
+    key_t min = string_create("");
+    key_t max = string_create("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+    bool b = true;
+    if(dict != NULL) {
+        b = invrep_aux(dict, min, max);
     }
     return b;
 }
